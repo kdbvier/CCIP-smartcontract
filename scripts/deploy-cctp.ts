@@ -76,31 +76,31 @@ async function main() {
       constructorArguments: config.avalanche,
     });
   } else {
-    console.log('deploying on', networkName)
-    const CCTPDeployer = await ethers.getContractFactory(
-      "CCTPSwap"
-    );
-    const CCTPContract = await CCTPDeployer.deploy(
-      config[networkName][0],
-      config[networkName][1],
-      config[networkName][2],
-      config[networkName][3],
-      config[networkName][4],
-      config[networkName][5],
-      config[networkName][6]
-    );
-    const cctpContractAddress = await CCTPContract.getAddress();
-    console.log(
-      "cctpContractAddress on ",
-      networkName,
-      " : ",
-      cctpContractAddress
-    );
+    // console.log('deploying on', networkName)
+    // const CCTPDeployer = await ethers.getContractFactory(
+    //   "CCTPSwap"
+    // );
+    // const CCTPContract = await CCTPDeployer.deploy(
+    //   config[networkName][0],
+    //   config[networkName][1],
+    //   config[networkName][2],
+    //   config[networkName][3],
+    //   config[networkName][4],
+    //   config[networkName][5],
+    //   config[networkName][6]
+    // );
+    // const cctpContractAddress = await CCTPContract.getAddress();
+    // console.log(
+    //   "cctpContractAddress on ",
+    //   networkName,
+    //   " : ",
+    //   cctpContractAddress
+    // );
     // @ts-ignore
-    // await run("verify:verify", {
-    //   address: "0x41C8508A42A9e383DdcA8964Efee7c08dFE64647",
-    //   constructorArguments: config[networkName],
-    // });
+    await run("verify:verify", {
+      address: "0x0AB659016e8fa23c5601A87352C86720ba48919c",
+      constructorArguments: config[networkName],
+    });
   }
 }
 

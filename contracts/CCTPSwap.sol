@@ -343,6 +343,11 @@ contract CCTPSwap is Ownable, ReentrancyGuard {
         address indexed newExecutor
     );
 
+    event SwapToUSDCAndBurn(
+        string indexed receiver,
+        string indexed token
+    );
+
     constructor(
         address _v3Router,
         address _v2Router,
@@ -504,7 +509,9 @@ contract CCTPSwap is Ownable, ReentrancyGuard {
     function swapToUSDCAndBurn(
         InitialSwapData calldata _initialSwapData,
         uint32 destinationDomain,
-        bytes32 mintRecipient
+        bytes32 mintRecipient,
+        string memory finalReceiver,  // This will be
+        string memory finalToken
     ) external payable nonReentrant {
         InitialSwapData memory initialSwapData = _initialSwapData;
         if (
@@ -530,7 +537,9 @@ contract CCTPSwap is Ownable, ReentrancyGuard {
         address outputToken = getLastAddressPath(initialSwapData.v3InitialSwap);
         require(outputToken == USDC, 'Must swap to USDC');
         uint256 USDCOut = swapInitialData(initialSwapData);
+        checkAndApproveAll(USDC, address(tokenMessenger), USDCOut);
         tokenMessenger.depositForBurn(USDCOut, destinationDomain, mintRecipient, USDC);
+        emit SwapToUSDCAndBurn(finalReceiver, finalToken);
     }
 
     function setExecutor(address _newExecutor) external onlyOwner {
