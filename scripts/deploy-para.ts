@@ -7,11 +7,12 @@ async function main() {
   const networkName = network.name;
   const config: Record<string, string[]> = {
     mainnet: [
-      "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
+      "0x6A000F20005980200259B80c5102003040001068",
       "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-      signer.address,
-      "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+      "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
       "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "500",
+      "0xe1Ff5a4C489B11E094BFBB5d23c6d4597a3a79AD",
     ],
     avalanche: [
       "0xb4315e873dBcf96Ffd0acd8EA43f689D8c20fB30",
@@ -20,19 +21,20 @@ async function main() {
       signer.address,
     ],
     base: [
-      "0x2626664c2603336e57b271c5c0b26f421741e481",
+      "0x6a000f20005980200259b80c5102003040001068",
       "0x4752ba5DBc23f44D87826276BF6Fd6b1C372aD24",
-      signer.address,
-      "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+      "0x2626664c2603336E57B271c5C0b26F421741e481",
       "0x4200000000000000000000000000000000000006",
+      "500",
+      "0xe1Ff5a4C489B11E094BFBB5d23c6d4597a3a79AD",
     ],
     arbitrumOne: [
       "0x6a000f20005980200259b80c5102003040001068",
-      signer.address,
-      "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+      "0x4752ba5DBc23f44D87826276BF6Fd6b1C372aD24",
+      "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
       "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-      "0xC30362313FBBA5cf9163F0bb16a0e01f01A896ca",
-      "0x19330d10D9Cc8751218eaf51E8885D058642E08A",
+      "500",
+      "0xe1Ff5a4C489B11E094BFBB5d23c6d4597a3a79AD",
     ],
     polygon: [
       "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
@@ -52,25 +54,28 @@ async function main() {
   console.log("deploying cctp contracts.......................");
 
   console.log("deploying on", networkName);
-  // const CCTPDeployer = await ethers.getContractFactory("CCTPSwap");
-  // const CCTPContract = await CCTPDeployer.deploy(
-  //   config[networkName][0],
-  //   config[networkName][1],
-  //   config[networkName][2],
-  //   config[networkName][3],
-  //   config[networkName][4],
-  //   config[networkName][5]
-  // );
-  // const cctpContractAddress = await CCTPContract.getAddress();
-  // console.log(
-  //   "cctpContractAddress on ",
-  //   networkName,
-  //   " : ",
-  //   cctpContractAddress
-  // );
+//     const ParaDeployer = await ethers.getContractFactory("ParaSameSwap");
+//     const ParaContract = await ParaDeployer.deploy(
+//       config[networkName][0],
+//       config[networkName][1],
+//       config[networkName][2],
+//       config[networkName][3],
+//       config[networkName][4],
+//       config[networkName][5]
+//     );
+//     const paraContractAddress = await ParaContract.getAddress();
+//     console.log(
+//       "paraContractAddress on ",
+//       networkName,
+//       " : ",
+//       paraContractAddress
+//     );
+//   console.log('verify waiting')
+//   await new Promise((resolve) => setTimeout(resolve, 3000));
+//   console.log('verify started')
   // @ts-ignore
   await run("verify:verify", {
-    address: "0x9787F9072068e67266abDB47Fd9c686F8E90a56f",
+    address: "0x3E44c0a477238fc1DD21d4a60d7fe7c6018518e3",
     constructorArguments: config[networkName],
   });
 }
