@@ -16,27 +16,27 @@ const config: HardhatUserConfig = {
   },
   networks: {
     mainnet: {
-      url: "https://ethereum.chain-swap.org",
+      url: "https://eth-mainnet.g.alchemy.com/v2/QKCYUendor_IXnPdV3A451oKVKk9K6_6",
       accounts: [PRIVATE_KEY],
     },
     avalanche: {
-      url: "https://avax.chain-swap.org/rpc",
+      url: "https://avax-mainnet.g.alchemy.com/v2/QKCYUendor_IXnPdV3A451oKVKk9K6_6",
       accounts: [PRIVATE_KEY],
     },
     base: {
-      url: "https://base.chain-swap.org",
+      url: "https://base-mainnet.g.alchemy.com/v2/QKCYUendor_IXnPdV3A451oKVKk9K6_6",
       accounts: [PRIVATE_KEY],
     },
     arbitrumOne: {
-      url: "https://arbitrum.chain-swap.org",
+      url: "https://arb-mainnet.g.alchemy.com/v2/QKCYUendor_IXnPdV3A451oKVKk9K6_6",
       accounts: [PRIVATE_KEY],
     },
     polygon: {
-      url: "https://polygon.chain-swap.org",
+      url: "https://greatest-nameless-gas.matic.quiknode.pro/b4f58391a4afca8ae686b556421915703c8e76e7",
       accounts: [PRIVATE_KEY],
     },
     optimism: {
-      url: "https://optimism.chain-swap.org",
+      url: "https://opt-mainnet.g.alchemy.com/v2/QKCYUendor_IXnPdV3A451oKVKk9K6_6",
       accounts: [PRIVATE_KEY],
     }
   },

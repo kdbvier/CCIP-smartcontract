@@ -21,20 +21,24 @@ async function main() {
       signer.address,
     ],
     base: [
-      "0x6a000f20005980200259b80c5102003040001068",
-      "0x4752ba5DBc23f44D87826276BF6Fd6b1C372aD24",
+      "0x881e3A65B4d4a04dD529061dd0071cf975F58bCD",
+      "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
       "0x2626664c2603336E57B271c5C0b26F421741e481",
-      "0x4200000000000000000000000000000000000006",
+      "0x4752ba5DBc23f44D87826276BF6Fd6b1C372aD24",
       "500",
       "0xe1Ff5a4C489B11E094BFBB5d23c6d4597a3a79AD",
+      signer.address,
+      "0x6A000F20005980200259B80c5102003040001068"
     ],
     arbitrumOne: [
-      "0x6a000f20005980200259b80c5102003040001068",
-      "0x4752ba5DBc23f44D87826276BF6Fd6b1C372aD24",
+      "0x141fa059441E0ca23ce184B6A78bafD2A517DdE8",
+      "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
       "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
-      "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "0x4752ba5DBc23f44D87826276BF6Fd6b1C372aD24",
       "500",
       "0xe1Ff5a4C489B11E094BFBB5d23c6d4597a3a79AD",
+      signer.address,
+      "0x6A000F20005980200259B80c5102003040001068"
     ],
     polygon: [
       "0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45",
@@ -54,28 +58,30 @@ async function main() {
   console.log("deploying cctp contracts.......................");
 
   console.log("deploying on", networkName);
-//     const ParaDeployer = await ethers.getContractFactory("ParaSameSwap");
-//     const ParaContract = await ParaDeployer.deploy(
-//       config[networkName][0],
-//       config[networkName][1],
-//       config[networkName][2],
-//       config[networkName][3],
-//       config[networkName][4],
-//       config[networkName][5]
-//     );
-//     const paraContractAddress = await ParaContract.getAddress();
-//     console.log(
-//       "paraContractAddress on ",
-//       networkName,
-//       " : ",
-//       paraContractAddress
-//     );
-//   console.log('verify waiting')
-//   await new Promise((resolve) => setTimeout(resolve, 3000));
-//   console.log('verify started')
+    const ParaDeployer = await ethers.getContractFactory("ParaCCIP");
+    const ParaContract = await ParaDeployer.deploy(
+      config[networkName][0],
+      config[networkName][1],
+      config[networkName][2],
+      config[networkName][3],
+      config[networkName][4],
+      config[networkName][5],
+      config[networkName][6],
+      config[networkName][7],
+    );
+    const paraContractAddress = await ParaContract.getAddress();
+    console.log(
+      "paraContractAddress on ",
+      networkName,
+      " : ",
+      paraContractAddress
+    );
+  console.log('verify waiting')
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  console.log('verify started')
   // @ts-ignore
   await run("verify:verify", {
-    address: "0x3E44c0a477238fc1DD21d4a60d7fe7c6018518e3",
+    address: paraContractAddress,
     constructorArguments: config[networkName],
   });
 }
