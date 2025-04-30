@@ -5,7 +5,8 @@
     "test": "npx hardhat test",
     "clean": "npx hardhat clean",
     "deploy": "npx hardhat run scripts/deploy.ts",
-    "deploy-cctp": "npx hardhat run scripts/deploy-cctp.ts"
+    "deploy-cctp": "npx hardhat run scripts/deploy-cctp.ts",
+    "deploy-instant": "npx hardhat run scripts/deploy-instant.ts"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.7",
